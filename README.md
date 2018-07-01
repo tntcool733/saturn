@@ -3,7 +3,8 @@
 
 ## 实践
 
-### 11.4运行Example.java
+### 运行Example.java
++ 示例com.tnt.springbootpractice.Example
 + pom中继承spring-boot-starter-parent
 + 运行mvn spring-boot:run
 + 访问localhost:8080得到Hello World!
@@ -15,7 +16,7 @@
 3. @EnableAutoConfiguration: 会聪明地根据相关依赖配置，“猜测”进程所需bean并且初始化。如果有@SpringBootApplication，等于默认加了此注解
 ```
 
-### 13.1依赖管理
+### 依赖管理
 + 我们可以看到spring-boot-starter-parent中的父pom是spring-boot-dependencies
 + spring-boot-dependencies用于管理所有spring-boot自身已经带的对外依赖
 + 如果需要，我们也可以在业务中进行版本覆盖,见解析
@@ -26,6 +27,16 @@
 <properties>
 	<spring-data-releasetrain.version>Fowler-SR2</spring-data-releasetrain.version>
 </properties>
+```
+
+### Bean注入
++ 示例com.tnt.springbootpractice.facade.impl.UserFacadeImpl
+
+```
+解析：
+1. 直接@Autowired注入依赖bean
+2. 构造函数+@Autowired注入依赖bean
+3. 单构造函数可以去除@Autowired
 ```
 
 ## 参考官方文档
