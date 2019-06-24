@@ -1,0 +1,36 @@
+spring:
+  datasource:
+    druid:
+      url: jdbc:mysql://127.0.0.1:3306/saturn_rank?useUnicode=true&characterEncoding=utf-8&zeroDateTimeBehavior=convertToNull&autoReconnect=true
+      username: root
+      password: root_pwd
+      driver-class-name: com.mysql.cj.jdbc.Driver
+      # 下面为连接池的补充设置，应用到上面所有数据源中
+      # 初始化大小，最小，最大
+      #考虑设置为3个连接 。对于db规模特别大的情况下可考虑设置为1个。避免启动时间过长
+      initialSize: 3
+      #可考虑该值的设置和初始化连接保持一致
+      minIdle: 3
+      maxActive: 30 
+      # 配置获取连接等待超时的时间
+      maxWait: 5000
+      # 配置间隔多久才进行一次检测，检测需要关闭的空闲连接，单位是毫秒
+      timeBetweenEvictionRunsMillis: 60000
+      # 配置一个连接在池中最小生存的时间，单位是毫秒
+      minEvictableIdleTimeMillis: 30000
+      validationQuery: select 'x'
+      #在获取连接后，确定是否要进行连接空间时间的检查
+      testWhileIdle: true
+      #获取连接检测
+      testOnBorrow: false
+      #归还连接检测
+      testOnReturn: false
+      # 打开PSCache，并且指定每个连接上PSCache的大小
+      poolPreparedStatements: true
+      #在Druid中，不会存在Oracle下PSCache占用内存过多的问题，可以把这个数值配置大一些，比如说100
+      maxPoolPreparedStatementPerConnectionSize: 100
+      # 配置监控统计拦截的filters，去掉后监控界面sql无法统计，'wall'用于防火墙
+      filters: stat,wall,slf4j
+      # 通过connectProperties属性来打开mergeSql功能；慢SQL记录
+      connectionProperties: druid.stat.mergeSql=true;druid.stat.slowSqlMillis=500
+    

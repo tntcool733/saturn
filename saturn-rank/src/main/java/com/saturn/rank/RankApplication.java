@@ -1,4 +1,6 @@
-package com.saturn.user;
+package com.saturn.rank;
+
+import javax.sql.DataSource;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
@@ -13,13 +15,13 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 @ComponentScan({"com.saturn"})
 @SpringBootApplication
-public class UserApplication implements CommandLineRunner{
+public class RankApplication implements CommandLineRunner{
 
     @Autowired
-    DruidDataSource dataSource;
+    DataSource dataSource;
 
 	public static void main(String[] args) {
-		SpringApplication.run(UserApplication.class, args);
+		SpringApplication.run(RankApplication.class, args);
 	}
 
     /* (non-Javadoc)
@@ -27,7 +29,8 @@ public class UserApplication implements CommandLineRunner{
      */
     @Override
     public void run(String... args) throws Exception {
-         log.info("[cmd=run dataSource maxActive={}]", dataSource.getMaxActive());
+        DruidDataSource druidDataSource = (DruidDataSource)dataSource;
+        log.info("dataSource maxActive:{}", druidDataSource.getMaxActive());
     }
 
 }
