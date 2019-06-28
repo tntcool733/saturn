@@ -4,67 +4,79 @@
         "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
 
 <generatorConfiguration>
-    <context id="MySQLTables" targetRuntime="MyBatis3" defaultModelType="flat">
+	<context id="MySQLTables" targetRuntime="MyBatis3"
+		defaultModelType="flat">
 
-        <property name="suppressTypeWarnings" value="true"/>
-        <property name="mybatis.generator.overwrite " value="true"/>
-        <property name="javaFileEncoding" value="UTF-8"/>
-        <!-- beginningDelimiter和endingDelimiter：指明数据库的用于标记数据库对象名的符号，比如ORACLE就是双引号，MYSQL默认是`反引号； -->
-        <property name="autoDelimitKeywords" value="true"/>
-        <property name="beginningDelimiter" value="`"/>
-        <property name="endingDelimiter" value="`"/>
+		<property name="suppressTypeWarnings" value="true" />
+		<property name="mybatis.generator.overwrite " value="true" />
+		<property name="javaFileEncoding" value="UTF-8" />
+		<!-- beginningDelimiter和endingDelimiter：指明数据库的用于标记数据库对象名的符号，比如ORACLE就是双引号，MYSQL默认是`反引号； -->
+		<property name="autoDelimitKeywords" value="true" />
+		<property name="beginningDelimiter" value="`" />
+		<property name="endingDelimiter" value="`" />
+
+		<plugin type="com.saturn.mybatis.plugin.MybatisLombokPlugin"/>
+
+		<!-- <plugin type="com.yy.mybatis_generator.plugins.DeleteExistedXmlPlugin" 
+			/> -->
+		<!--<plugin type="com.yy.mybatis_generator.plugins.BaseMapperPlugin" > -->
+		<!--<property name="baseMapperType" value="com.yy.embed.finance.weibo.help.dao.BaseMapper" 
+			/> -->
+		<!--</plugin> -->
+		<!-- <plugin type="com.yy.mybatis_generator.plugins.MySQLPaginationPlugin" 
+			/> -->
+		<!-- <plugin type="org.mybatis.generator.plugins.ToStringPlugin" /> -->
+		<!-- <plugin type="com.yy.mybatis_generator.plugins.BuilderPlugin" /> -->
+		<!--serialize plugin -->
+		<plugin type="org.mybatis.generator.plugins.SerializablePlugin"></plugin>
+		<!-- <plugin type="com.yy.mybatis_generator.plugins.MysqlSplitingTablePlugin" 
+			/> -->
+		<!-- <plugin type="com.yy.mybatis_generator.plugins.JsonIgnoreGenerator" 
+			/> -->
+
+		<!-- <commentGenerator type="com.yy.mybatis_generator.plugins.DefaultCommentGenerator"> -->
+		<!-- <property name="suppressAllComments" value="true"/> -->
+		<!-- <property name="suppressDate" value="true"/> -->
+		<!-- </commentGenerator> -->
+		<commentGenerator type="com.saturn.mybatis.commentgenerator.MybatisCommentGenerator">
+			<property name="suppressAllComments" value="true" />
+			<property name="suppressDate" value="true" />
+		</commentGenerator>
+
+		<jdbcConnection driverClass="com.mysql.jdbc.Driver"
+			connectionURL="jdbc:mysql://127.0.0.1:3306/saturn_demo?useUnicode=true&amp;characterEncoding=utf8"
+			userId="root" password="root_pwd">
+		</jdbcConnection>
 
 
-<!--         <plugin type="com.yy.mybatis_generator.plugins.DeleteExistedXmlPlugin" /> -->
-        <!--<plugin type="com.yy.mybatis_generator.plugins.BaseMapperPlugin" >-->
-        <!--<property name="baseMapperType" value="com.yy.embed.finance.weibo.help.dao.BaseMapper" />-->
-        <!--</plugin>-->
-<!--         <plugin type="com.yy.mybatis_generator.plugins.MySQLPaginationPlugin" /> -->
-        <plugin type="org.mybatis.generator.plugins.ToStringPlugin" />
-<!--         <plugin type="com.yy.mybatis_generator.plugins.BuilderPlugin" /> -->
-        <!--serialize plugin-->
-        <plugin type="org.mybatis.generator.plugins.SerializablePlugin"></plugin>
-<!--         <plugin type="com.yy.mybatis_generator.plugins.MysqlSplitingTablePlugin" /> -->
-<!--         <plugin type="com.yy.mybatis_generator.plugins.JsonIgnoreGenerator" /> -->
+		<javaTypeResolver>
+			<property name="forceBigDecimals" value="false" />
+		</javaTypeResolver>
 
-<!--         <commentGenerator type="com.yy.mybatis_generator.plugins.DefaultCommentGenerator"> -->
-<!--             <property name="suppressAllComments" value="true"/> -->
-<!--             <property name="suppressDate" value="true"/> -->
-<!--         </commentGenerator> -->
+		<javaModelGenerator
+			targetPackage="com.saturn.demo.dao.bean"
+			targetProject="src/main/java">
+			<property name="enableSubPackages" value="true" />
+			<property name="trimStrings" value="true" />
+		</javaModelGenerator>
 
-        <jdbcConnection driverClass="com.mysql.jdbc.Driver"
-                        connectionURL="jdbc:mysql://127.0.0.1:3306/saturn_demo?useUnicode=true&amp;characterEncoding=utf8"
-                        userId="root" password="root_pwd">
-        </jdbcConnection>
+		<sqlMapGenerator targetPackage="mapper.generated"
+			targetProject="src/main/resources">
+			<property name="enableSubPackages" value="true" />
+		</sqlMapGenerator>
 
+		<javaClientGenerator type="XMLMAPPER"
+			targetPackage="com.saturn.demo.dao.mapper"
+			targetProject="src/main/java">
+			<property name="enableSubPackages" value="true" />
+		</javaClientGenerator>
 
-        <javaTypeResolver>
-            <property name="forceBigDecimals" value="false"/>
-        </javaTypeResolver>
-
-        <javaModelGenerator targetPackage="com.saturn.demo.dao.bean"
-                            targetProject="src/main/java" >
-            <property name="enableSubPackages" value="true"/>
-            <property name="trimStrings" value="true"/>
-        </javaModelGenerator>
-
-        <sqlMapGenerator targetPackage="mapper.generated"
-                         targetProject="src/main/resources">
-            <property name="enableSubPackages" value="true"/>
-        </sqlMapGenerator>
-
-        <javaClientGenerator type="XMLMAPPER"
-                             targetPackage="com.saturn.demo.dao.mapper"
-                             targetProject="src/main/java">
-            <property name="enableSubPackages" value="true"/>
-        </javaClientGenerator>
-
-        <table schema="saturn_demo" tableName="demo_info"
-               domainObjectName="DemoInfo" enableCountByExample="true"
-               enableUpdateByExample="true" enableDeleteByExample="false"
-               enableSelectByExample="true" selectByExampleQueryId="false"
-               enableDeleteByPrimaryKey="true" enableInsert="true"
-               enableSelectByPrimaryKey="true" enableUpdateByPrimaryKey="true">
-        </table>
-    </context>
+		<table schema="saturn_demo" tableName="demo_info"
+			domainObjectName="DemoInfo" enableCountByExample="true"
+			enableUpdateByExample="true" enableDeleteByExample="false"
+			enableSelectByExample="true" selectByExampleQueryId="false"
+			enableDeleteByPrimaryKey="true" enableInsert="true"
+			enableSelectByPrimaryKey="true" enableUpdateByPrimaryKey="true">
+		</table>
+	</context>
 </generatorConfiguration>
