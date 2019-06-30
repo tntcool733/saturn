@@ -15,7 +15,9 @@
 		<property name="beginningDelimiter" value="`" />
 		<property name="endingDelimiter" value="`" />
 
-		<plugin type="com.saturn.mybatis.plugin.MybatisLombokPlugin"/>
+		<plugin type="com.saturn.mybatis.plugin.LombokPlugin"/>
+		<plugin type="com.saturn.mybatis.plugin.PaginationPlugin"/>
+		<plugin type="com.saturn.mybatis.plugin.DeleteExistingSqlMapsPlugin"/>
 
 		<!-- <plugin type="com.yy.mybatis_generator.plugins.DeleteExistedXmlPlugin" 
 			/> -->
@@ -44,7 +46,7 @@
 		</commentGenerator>
 
 		<jdbcConnection driverClass="com.mysql.jdbc.Driver"
-			connectionURL="jdbc:mysql://127.0.0.1:3306/saturn_demo?useUnicode=true&amp;characterEncoding=utf8"
+			connectionURL="jdbc:mysql://127.0.0.1:3306/saturn_demo?useUnicode=true&amp;characterEncoding=utf8&amp;nullCatalogMeansCurrent=true"
 			userId="root" password="root_pwd">
 		</jdbcConnection>
 

@@ -11,6 +11,10 @@ public class DemoInfoExample {
 
     protected List<Criteria> oredCriteria;
 
+    protected Long limitStart;
+
+    protected Long limitEnd;
+
     public DemoInfoExample() {
         oredCriteria = new ArrayList<Criteria>();
     }
@@ -62,6 +66,27 @@ public class DemoInfoExample {
         oredCriteria.clear();
         orderByClause = null;
         distinct = false;
+    }
+
+    public void setLimitStart(Long limitStart) {
+        this.limitStart=limitStart;
+    }
+
+    public Long getLimitStart() {
+        return limitStart;
+    }
+
+    public void setLimitEnd(Long limitEnd) {
+        this.limitEnd=limitEnd;
+    }
+
+    public Long getLimitEnd() {
+        return limitEnd;
+    }
+
+    public void limit(Long limitStart, Long limitEnd) {
+        this.limitStart = limitStart;
+        this.limitEnd = limitEnd;
     }
 
     protected abstract static class GeneratedCriteria {

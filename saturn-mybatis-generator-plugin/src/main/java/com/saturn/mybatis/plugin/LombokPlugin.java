@@ -15,7 +15,7 @@ import org.mybatis.generator.api.dom.java.TopLevelClass;
  * @author wenziheng
  * @date 2019/06/27
  */
-public class MybatisLombokPlugin extends PluginAdapter {
+public class LombokPlugin extends PluginAdapter {
 
     @Override
     public boolean modelBaseRecordClassGenerated(TopLevelClass topLevelClass, IntrospectedTable introspectedTable) {

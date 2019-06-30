@@ -6,10 +6,12 @@ import java.util.List;
 import org.apache.ibatis.annotations.Param;
 
 /**
-* Created by Mybatis Generator 2019-06-28
+* Created by Mybatis Generator 2019-06-30
 */
 public interface DemoInfoMapper {
     long countByExample(DemoInfoExample example);
+
+    int deleteByPrimaryKey(Long id);
 
     int insert(DemoInfo record);
 
@@ -17,7 +19,13 @@ public interface DemoInfoMapper {
 
     List<DemoInfo> selectByExample(DemoInfoExample example);
 
+    DemoInfo selectByPrimaryKey(Long id);
+
     int updateByExampleSelective(@Param("record") DemoInfo record, @Param("example") DemoInfoExample example);
 
     int updateByExample(@Param("record") DemoInfo record, @Param("example") DemoInfoExample example);
+
+    int updateByPrimaryKeySelective(DemoInfo record);
+
+    int updateByPrimaryKey(DemoInfo record);
 }

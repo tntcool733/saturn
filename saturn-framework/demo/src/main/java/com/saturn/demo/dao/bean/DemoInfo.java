@@ -8,7 +8,7 @@ import lombok.Setter;
 import lombok.ToString;
 
 /**
-* Created by Mybatis Generator 2019-06-28
+* Created by Mybatis Generator 2019-06-30
 */
 @Getter
 @Setter
