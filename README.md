@@ -6,6 +6,8 @@
 [docker-env](./docker-env)
 
 ## mybatis-generator常用插件
-+ lombok annotation扩展
-+ comment注释扩展
++ lombok annotation插件
++ comment注释插件
++ mapper xml删除插件
++ limit查询分页插件
 [saturn-mybatis-generator-plugin](./saturn-mybatis-generator-plugin)
