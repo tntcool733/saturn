@@ -4,7 +4,7 @@ spring:
       url: jdbc:mysql://127.0.0.1:3306/saturn_demo?useUnicode=true&characterEncoding=utf-8&zeroDateTimeBehavior=convertToNull&autoReconnect=true
       username: root
       password: root_pwd
-      driver-class-name: com.mysql.cj.jdbc.Driver
+      driver-class-name: com.mysql.jdbc.Driver
       # 下面为连接池的补充设置，应用到上面所有数据源中
       # 初始化大小，最小，最大
       #考虑设置为3个连接 。对于db规模特别大的情况下可考虑设置为1个。避免启动时间过长

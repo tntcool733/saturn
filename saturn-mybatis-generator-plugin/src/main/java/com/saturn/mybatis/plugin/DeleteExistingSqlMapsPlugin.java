@@ -7,10 +7,6 @@ import org.mybatis.generator.api.GeneratedXmlFile;
 import org.mybatis.generator.api.IntrospectedTable;
 import org.mybatis.generator.api.PluginAdapter;
 
-/**
- * @author wenziheng
- * @date 2019/06/30
- */
 public class DeleteExistingSqlMapsPlugin extends PluginAdapter {
 
     @Override

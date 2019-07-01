@@ -5,11 +5,8 @@ import com.saturn.demo.dao.bean.DemoInfoExample;
 import java.util.List;
 import org.apache.ibatis.annotations.Param;
 
-/**
-* Created by Mybatis Generator 2019-06-30
-*/
 public interface DemoInfoMapper {
-    long countByExample(DemoInfoExample example);
+    int countByExample(DemoInfoExample example);
 
     int deleteByPrimaryKey(Long id);
 

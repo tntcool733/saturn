@@ -4,8 +4,7 @@
         "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
 
 <generatorConfiguration>
-	<context id="MySQLTables" targetRuntime="MyBatis3"
-		defaultModelType="flat">
+	<context id="MySQLTables" targetRuntime="MyBatis3" defaultModelType="flat">
 
 		<property name="suppressTypeWarnings" value="true" />
 		<property name="mybatis.generator.overwrite " value="true" />
@@ -15,38 +14,20 @@
 		<property name="beginningDelimiter" value="`" />
 		<property name="endingDelimiter" value="`" />
 
-		<plugin type="com.saturn.mybatis.plugin.LombokPlugin"/>
-		<plugin type="com.saturn.mybatis.plugin.PaginationPlugin"/>
-		<plugin type="com.saturn.mybatis.plugin.DeleteExistingSqlMapsPlugin"/>
+		<plugin	type="com.saturn.mybatis.plugin.DeleteExistingSqlMapsPlugin" />
+		<plugin type="com.saturn.mybatis.plugin.PaginationPlugin" />
+		<plugin type="org.mybatis.generator.plugins.ToStringPlugin" />
+		<plugin type="com.saturn.mybatis.plugin.BuilderPlugin" />
+		<plugin type="org.mybatis.generator.plugins.SerializablePlugin" />
+		<plugin type="com.saturn.mybatis.plugin.SplitingTablePlugin" />
 
-		<!-- <plugin type="com.yy.mybatis_generator.plugins.DeleteExistedXmlPlugin" 
-			/> -->
-		<!--<plugin type="com.yy.mybatis_generator.plugins.BaseMapperPlugin" > -->
-		<!--<property name="baseMapperType" value="com.yy.embed.finance.weibo.help.dao.BaseMapper" 
-			/> -->
-		<!--</plugin> -->
-		<!-- <plugin type="com.yy.mybatis_generator.plugins.MySQLPaginationPlugin" 
-			/> -->
-		<!-- <plugin type="org.mybatis.generator.plugins.ToStringPlugin" /> -->
-		<!-- <plugin type="com.yy.mybatis_generator.plugins.BuilderPlugin" /> -->
-		<!--serialize plugin -->
-		<plugin type="org.mybatis.generator.plugins.SerializablePlugin"></plugin>
-		<!-- <plugin type="com.yy.mybatis_generator.plugins.MysqlSplitingTablePlugin" 
-			/> -->
-		<!-- <plugin type="com.yy.mybatis_generator.plugins.JsonIgnoreGenerator" 
-			/> -->
-
-		<!-- <commentGenerator type="com.yy.mybatis_generator.plugins.DefaultCommentGenerator"> -->
-		<!-- <property name="suppressAllComments" value="true"/> -->
-		<!-- <property name="suppressDate" value="true"/> -->
-		<!-- </commentGenerator> -->
 		<commentGenerator type="com.saturn.mybatis.commentgenerator.MybatisCommentGenerator">
 			<property name="suppressAllComments" value="true" />
 			<property name="suppressDate" value="true" />
 		</commentGenerator>
 
 		<jdbcConnection driverClass="com.mysql.jdbc.Driver"
-			connectionURL="jdbc:mysql://127.0.0.1:3306/saturn_demo?useUnicode=true&amp;characterEncoding=utf8&amp;nullCatalogMeansCurrent=true"
+			connectionURL="jdbc:mysql://127.0.0.1:3306/saturn_demo?useUnicode=true&amp;characterEncoding=utf8"
 			userId="root" password="root_pwd">
 		</jdbcConnection>
 
@@ -76,9 +57,22 @@
 		<table schema="saturn_demo" tableName="demo_info"
 			domainObjectName="DemoInfo" enableCountByExample="true"
 			enableUpdateByExample="true" enableDeleteByExample="false"
-			enableSelectByExample="true" selectByExampleQueryId="false"
+			enableSelectByExample="true" selectByExampleQueryId="true"
 			enableDeleteByPrimaryKey="true" enableInsert="true"
 			enableSelectByPrimaryKey="true" enableUpdateByPrimaryKey="true">
 		</table>
+
+		<table schema="saturn_demo" tableName="demo_split"
+			domainObjectName="DemoSplit" enableCountByExample="true"
+			enableUpdateByExample="true" enableDeleteByExample="false"
+			enableSelectByExample="true" selectByExampleQueryId="true"
+			enableDeleteByPrimaryKey="true" enableInsert="true"
+			enableSelectByPrimaryKey="true" enableUpdateByPrimaryKey="true">
+
+			<property name="splitFieldName" value="uid" />
+			<property name="splitTableModel" value="10" />
+			<property name="splitTablePrefix" value="demo_split_" />
+		</table>
+
 	</context>
 </generatorConfiguration>
