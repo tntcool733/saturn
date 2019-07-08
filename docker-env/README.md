@@ -46,3 +46,8 @@ mysql -uroot -proot_pwd
 create database saturn_${project_name} default character set utf8mb4 collate utf8mb4_unicode_ci;
 ```
 
+
+## redis
++ 获取redis
+```
+```

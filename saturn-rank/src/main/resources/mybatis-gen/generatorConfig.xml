@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration
+        PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+        "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+
+<generatorConfiguration>
+	<context id="MySQLTables" targetRuntime="MyBatis3" defaultModelType="flat">
+
+		<property name="suppressTypeWarnings" value="true" />
+		<property name="mybatis.generator.overwrite " value="true" />
+		<property name="javaFileEncoding" value="UTF-8" />
+		<!-- beginningDelimiter和endingDelimiter：指明数据库的用于标记数据库对象名的符号，比如ORACLE就是双引号，MYSQL默认是`反引号； -->
+		<property name="autoDelimitKeywords" value="true" />
+		<property name="beginningDelimiter" value="`" />
+		<property name="endingDelimiter" value="`" />
+
+		<plugin	type="com.saturn.mybatis.plugin.DeleteExistingSqlMapsPlugin" />
+		<plugin type="com.saturn.mybatis.plugin.PaginationPlugin" />
+		<plugin type="org.mybatis.generator.plugins.ToStringPlugin" />
+		<plugin type="com.saturn.mybatis.plugin.BuilderPlugin" />
+		<plugin type="org.mybatis.generator.plugins.SerializablePlugin" />
+		<plugin type="com.saturn.mybatis.plugin.SplitingTablePlugin" />
+
+		<commentGenerator type="com.saturn.mybatis.commentgenerator.MybatisCommentGenerator">
+			<property name="suppressAllComments" value="true" />
+			<property name="suppressDate" value="true" />
+		</commentGenerator>
+
+		<jdbcConnection driverClass="com.mysql.jdbc.Driver"
+			connectionURL="jdbc:mysql://127.0.0.1:3306/saturn_rank?useUnicode=true&amp;characterEncoding=utf8"
+			userId="root" password="root_pwd">
+		</jdbcConnection>
+
+
+		<javaTypeResolver>
+			<property name="forceBigDecimals" value="false" />
+		</javaTypeResolver>
+
+		<javaModelGenerator
+			targetPackage="com.saturn.rank.dao.bean"
+			targetProject="src/main/java">
+			<property name="enableSubPackages" value="true" />
+			<property name="trimStrings" value="true" />
+		</javaModelGenerator>
+
+		<sqlMapGenerator targetPackage="mapper.generated"
+			targetProject="src/main/resources">
+			<property name="enableSubPackages" value="true" />
+		</sqlMapGenerator>
+
+		<javaClientGenerator type="XMLMAPPER"
+			targetPackage="com.saturn.rank.dao.mapper"
+			targetProject="src/main/java">
+			<property name="enableSubPackages" value="true" />
+		</javaClientGenerator>
+
+<!-- 		<table schema="saturn_demo" tableName="demo_info" -->
+<!-- 			domainObjectName="DemoInfo" enableCountByExample="true" -->
+<!-- 			enableUpdateByExample="true" enableDeleteByExample="false" -->
+<!-- 			enableSelectByExample="true" selectByExampleQueryId="true" -->
+<!-- 			enableDeleteByPrimaryKey="true" enableInsert="true" -->
+<!-- 			enableSelectByPrimaryKey="true" enableUpdateByPrimaryKey="true"> -->
+<!-- 		</table> -->
+
+<!-- 		<table schema="saturn_demo" tableName="demo_split" -->
+<!-- 			domainObjectName="DemoSplit" enableCountByExample="true" -->
+<!-- 			enableUpdateByExample="true" enableDeleteByExample="false" -->
+<!-- 			enableSelectByExample="true" selectByExampleQueryId="true" -->
+<!-- 			enableDeleteByPrimaryKey="true" enableInsert="true" -->
+<!-- 			enableSelectByPrimaryKey="true" enableUpdateByPrimaryKey="true"> -->
+
+<!-- 			<property name="splitFieldName" value="uid" /> -->
+<!-- 			<property name="splitTableModel" value="10" /> -->
+<!-- 			<property name="splitTablePrefix" value="demo_split_" /> -->
+<!-- 		</table> -->
+
+	</context>
+</generatorConfiguration>
