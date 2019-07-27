@@ -2,6 +2,8 @@
 
 import java.util.Date;
 
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.cloud.context.config.annotation.RefreshScope;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -16,7 +18,16 @@ import saturn.spring.cloud.serviceprovider.enums.UserSex;
 @Slf4j
 @RestController
 @RequestMapping("/user")
+@RefreshScope
 public class UserController {
+
+    @Value("${user.uidWhiteList}")
+    private String uidWhiteList;
+    
+    @RequestMapping(path = "/getUidWhiteList")
+    public String getUidWhiteList() {
+        return uidWhiteList;
+    }
 
     @RequestMapping(path = "/getByUid", params = {"uid"})
     public UserView getByUid(Long uid) {

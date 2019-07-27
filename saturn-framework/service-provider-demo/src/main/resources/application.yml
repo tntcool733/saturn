@@ -1,6 +1,2 @@
-spring:
-  application:
-    name: service-provider
-
-server:
-  port: 0
+user:
+  uidWhiteList: 1234,5678
