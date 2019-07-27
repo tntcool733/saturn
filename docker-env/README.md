@@ -48,6 +48,4 @@ create database saturn_${project_name} default character set utf8mb4 collate utf
 
 
 ## redis
-+ 获取redis
-```
-```
+[redis sentinel环境搭建](redis-sentinel/README.md)
