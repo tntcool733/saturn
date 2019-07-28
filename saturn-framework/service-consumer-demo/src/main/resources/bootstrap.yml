@@ -1,0 +1,16 @@
+spring:
+  application:
+    name: service-consumer
+  cloud:
+    # nacos config
+    nacos:
+      discovery:
+        server-addr: 127.0.0.1:8848
+      config:
+        server-addr: 127.0.0.1:8848
+        file-extension: yaml
+        group: dev
+
+server:
+  port: 8802
+
