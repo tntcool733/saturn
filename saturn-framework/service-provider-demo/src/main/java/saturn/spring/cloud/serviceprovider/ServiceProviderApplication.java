@@ -2,12 +2,14 @@ package saturn.spring.cloud.serviceprovider;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 import saturn.spring.cloud.serviceprovider.controller.PerformanceInteceptor;
 
 @SpringBootApplication
+@EnableDiscoveryClient
 public class ServiceProviderApplication implements WebMvcConfigurer {
 
 	public static void main(String[] args) {

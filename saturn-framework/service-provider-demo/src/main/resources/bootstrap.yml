@@ -4,6 +4,8 @@ spring:
   cloud:
     # nacos config
     nacos:
+      discovery:
+        server-addr: 127.0.0.1:8848
       config:
         server-addr: 127.0.0.1:8848
         file-extension: yaml
@@ -11,3 +13,6 @@ spring:
 
 server:
   port: 8801
+
+user:
+  uidWhiteList: 1234,5678
