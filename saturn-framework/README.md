@@ -4,7 +4,7 @@
 
 ## demo
 通过demo集中演示各个组件的功能  
-[service-provider-demo](./service-provider-demo) : 服务提供方demo
+[service-provider-demo](./service-provider-demo) : 服务提供方demo  
 [service-consumer-demo](./service-consumer-demo) : 服务调用方demo
 
 ## nacos
